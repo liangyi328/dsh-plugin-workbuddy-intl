@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "dsh-plugin-workbuddy-intl",
   "version": "0.1.0",
   "description": "WorkBuddy International (workbuddy.ai) model provider for DeepSeek Harness: registers the international WorkBuddy model catalog so its models can be used in DSH with its own zero-API-key device-authorization login",
