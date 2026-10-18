@@ -1,0 +1,29 @@
+# dsh-plugin-workbuddy-intl bundle patch.
+#
+# The row id (`llm-workbuddy-intl`) is the settings namespace the Models page
+# uses for this provider's credential field, so it must stay stable. It is
+# deliberately distinct from the domestic plugin's `llm-workbuddy`: the two
+# providers coexist, and a shared namespace would make one overwrite the
+# other's credential.
+#
+# The row name is the package's own npm name: the loader resolves it from the
+# installed package (profile node_modules), exactly like every official bundle
+# row. No file:/// URLs and no absolute paths, so the package installs as-is
+# from GitHub or npm on any machine.
+- insert:
+    - id: llm-workbuddy-intl
+      name: dsh-plugin-workbuddy-intl
+      config:
+        displayName: WorkBuddy (Intl)
+        # 'cli' exposes the models the installed WorkBuddy CLI runs;
+        # 'all' exposes every entry in the account catalog.
+        scope: cli
+        multiplierInName: true
+        # Persist the per-model context-length choice next to the international
+        # catalog. Leave empty for the default (~/.workbuddy-ai), or 'off' to
+        # disable persistence (choices then last for the current process only).
+        contextWindowStorePath: ''
+        # Diagnostics are opt-in: set `debugLogPath` (an id-targeted config
+        # override in the profile patch is the usual way) to make the plugin
+        # append a breadcrumb trail to that file. Unset = silent, which is
+        # right for distribution.
